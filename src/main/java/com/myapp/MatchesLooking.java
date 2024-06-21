@@ -1,3 +1,5 @@
+package com.myapp;
+
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
@@ -29,40 +31,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */ 
 
-import java.io.Console;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class RegexTestHarness {
+public class MatchesLooking {
 
-    public static void main(String[] args){
-        Console console = System.console();
-        if (console == null) {
-            System.err.println("No console.");
-            System.exit(1);
-        }
-        while (true) {
+    private static final String REGEX = "foo";
+    private static final String INPUT =
+        "fooooooooooooooooo";
+    private static Pattern pattern;
+    private static Matcher matcher;
 
-            Pattern pattern = 
-            Pattern.compile(console.readLine("%nEnter your regex: "));
+    public static void main(String[] args) {
+   
+        // Initialize
+        pattern = Pattern.compile(REGEX);
+        matcher = pattern.matcher(INPUT);
 
-            Matcher matcher = 
-            pattern.matcher(console.readLine("Enter input string to search: "));
+        System.out.println("Current REGEX is: "
+                           + REGEX);
+        System.out.println("Current INPUT is: "
+                           + INPUT);
 
-            boolean found = false;
-            while (matcher.find()) {
-                console.format("I found the text" +
-                    " \"%s\" starting at " +
-                    "index %d and ending at index %d.%n",
-                    matcher.group(),
-                    matcher.start(),
-                    matcher.end());
-                found = true;
-            }
-            if(!found){
-                console.format("No match found.%n");
-            }
-        }
+        System.out.println("lookingAt(): "
+            + matcher.lookingAt());
+        System.out.println("matches(): "
+            + matcher.matches());
     }
 }
 
