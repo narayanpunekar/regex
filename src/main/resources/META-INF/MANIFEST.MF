@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Built-By: narayan.punekar@yahoo.com
+Created-By: Apache Maven 3.6.0
+Build-Jdk: 17.0.11
+Main-Class: com.myapp.RegexTestHarness
